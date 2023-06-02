@@ -22,6 +22,7 @@ data "aws_vpc" "default" {
 resource "aws_instance" "web_server" {
   ami                  = data.aws_ami.websrv_amazon_linux.id
   key_name             = aws_key_pair.web_key.key_name
+  availability_zone    = "us-east-1a"
   subnet_id            = aws_subnet.public_subnet.id
   instance_type        = var.instance_type
   iam_instance_profile = "LabInstanceProfile"
@@ -40,6 +41,7 @@ resource "aws_key_pair" "web_key" {
 resource "aws_subnet" "public_subnet" {
   vpc_id                  = data.aws_vpc.default.id
   cidr_block              = var.public_subnet_cidrs
+  availability_zone       = "us-east-1a"
   map_public_ip_on_launch = true
   tags = merge(
     var.default_tags, {

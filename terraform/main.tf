@@ -88,7 +88,7 @@ resource "aws_security_group" "web_sg" {
   }
 
   ingress {
-    description = "For Green"
+    description = "For Lime"
     from_port   = 8083
     to_port     = 8083
     protocol    = "tcp"
@@ -108,10 +108,10 @@ resource "aws_security_group" "web_sg" {
   )
 }
 
-resource "aws_ecr_repository" "websrv_images" {
-  name = "websrv-images"
+resource "aws_ecr_repository" "webserver-image" {
+  name = "webserver-image"
 }
 
-resource "aws_ecr_repository" "mysql_images" {
-  name = "mysql-images"
+resource "aws_ecr_repository" "mysql-image" {
+  name = "mysql-image"
 }
